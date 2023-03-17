@@ -1,0 +1,21 @@
+ %{
+/* Definition section */
+#include<stdio.h>
+#include "time.tab.h"
+%}
+
+/* Rule Section */
+%%
+[0-9]+	{printf("Digit: %s\n",yytext); return dg;}
+"savar "|"bopor "|"sanj "|"raat "	{printf("Keyword: %s\n",yytext); return k;}
+"na " {printf("Keyword1: %s\n",yytext); return k1;}
+"sava "|"sada "|"pona "	{printf("Operation: %s\n",yytext); return op;}
+"dodh"|"adhi"	{printf("Operation1: %s\n",yytext); return op1;}
+\n {return eol;}
+.	;
+%%
+
+int yywrap()
+{
+return 1;
+}
